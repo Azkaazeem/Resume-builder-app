@@ -389,3 +389,176 @@ body {
         overflow-y: auto; /* Scroll wapis lao */
     }
 }
+
+
+
+
+
+
+/* =======================================================
+   FINAL RESPONSIVE FIXES FOR HOME.HTML (DASHBOARD & EDITOR)
+   (Is code ko style.css ke sabse neeche paste karein)
+   ======================================================= */
+
+/* --- 1. DASHBOARD FIXES (Jahan "My Resumes" likha hai) --- */
+@media (max-width: 768px) {
+    /* Header ko column bana diya taake text aur button overlap na hon */
+    #dashboardSection .d-flex.justify-content-between {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 15px;
+    }
+    
+    /* "Create New Resume" button ko mobile par full width diya */
+    #dashboardSection .d-flex button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Container ki padding thori adjust ki */
+    #dashboardSection .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* --- 2. EDITOR FIXES (Jahan Resume edit karte hain) --- */
+@media (max-width: 992px) {
+    
+    /* -- Navbar Fixes -- */
+    #editorSection .navbar .d-flex {
+        flex-wrap: wrap; /* Buttons ko neeche jagah mile */
+        gap: 10px;
+        justify-content: center;
+    }
+    /* Mobile par "Resume Editor" likha hua chupa dein taake jagah bache */
+    #editorSection .navbar span.fw-bold.text-primary {
+        display: none;
+    }
+    #editorSection .navbar button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    /* -- Layout Stack Fix (Form Upar, Resume Neeche) -- */
+    #editorSection .row {
+        flex-direction: column; /* Column banao */
+        margin: 0;
+    }
+
+    /* FORM SECTION (INPUTS) */
+    #editorSection .col-md-4 {
+        width: 100% !important;
+        height: auto !important; /* Height auto taake scroll na phase */
+        max-height: 50vh; /* Screen ka aadha hissa form ko diya */
+        overflow-y: auto; /* Sirf form scroll ho */
+        border-right: none !important;
+        border-bottom: 4px solid #e0e7ff; /* Separation line */
+        padding-bottom: 20px;
+    }
+
+    /* PREVIEW SECTION (RESUME VIEW) */
+    #editorSection .col-md-8 {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 60vh; /* Baaki hissa preview ke liye */
+        background-color: #525659 !important; /* Dark background taake resume pop kare */
+        display: flex;
+        justify-content: center; /* Resume ko center karo */
+        padding-top: 30px;
+        padding-bottom: 50px;
+        overflow: hidden;
+    }
+
+    /* -- RESUME SCALING MAGIC (Taake horizontal scroll na aye) -- */
+    #resumePreview {
+        transform: scale(0.45) !important; /* Resume ko 45% size par dikhao */
+        transform-origin: top center;
+        margin-top: 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3) !important;
+        /* Purane margins hatayein */
+        left: auto;
+        right: auto;
+    }
+}
+
+/* --- 3. CHOTAY MOBILES KE LIYE (iPhone SE waghera) --- */
+@media (max-width: 450px) {
+    #resumePreview {
+        transform: scale(0.38) !important; /* Aur chota karo taake fit aye */
+    }
+    
+    #editorSection .col-md-4 {
+        max-height: 45vh; /* Form ko thora chota karo choti screen par */
+    }
+}
+
+
+
+
+/* =======================================================================
+   FINAL MOBILE FIX - FORM AUR PREVIEW DONO DIKHENGE (Replace Old Code)
+   ======================================================================= */
+
+@media (max-width: 992px) {
+
+    /* 1. LAYOUT: Mobile par layout ko column banao */
+    #editorSection .row {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important; /* Height auto rakhein taake content na kate */
+        overflow: visible !important; /* Scroll allow karein */
+    }
+
+    /* 2. FORM SECTION (UPAR) */
+    #editorSection .col-md-4 {
+        width: 100% !important;
+        height: 400px !important; /* Form ko fixed height di */
+        flex: none !important; /* Size shrink na ho */
+        overflow-y: auto !important; /* Andar scroll ho */
+        border-right: none !important;
+        border-bottom: 5px solid #e0e7ff; /* Separation line */
+        padding: 20px !important;
+        background-color: #fff !important;
+        display: block !important;
+    }
+
+    /* Input fields ko theek se dikhane ke liye */
+    #editorSection .col-md-4 .row .col-6 {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+
+    /* 3. PREVIEW SECTION (NEECHE - RESUME YAHAN AYEGA) */
+    #editorSection .col-md-8 {
+        width: 100% !important;
+        height: auto !important; /* Height content ke hisaab se */
+        min-height: 600px !important; /* ZABARDASTI HEIGHT DI: Taake gayab na ho */
+        background-color: #525659 !important; /* Dark background */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        padding-top: 30px !important;
+        padding-bottom: 50px !important;
+        flex: none !important;
+    }
+
+    /* 4. RESUME PAGE SCALING (Mobile fit) */
+    #resumePreview {
+        display: block !important; /* Ensure karein ke element visible ho */
+        transform: scale(0.42) !important; /* Size set karein */
+        transform-origin: top center !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Chotay phones ke liye adjustment */
+@media (max-width: 450px) {
+    #resumePreview {
+        transform: scale(0.35) !important;
+    }
+    #editorSection .col-md-8 {
+        min-height: 500px !important; /* Height adjust */
+    }
+}
