@@ -206,7 +206,7 @@ async function signUp(e) {
                             phone: sPhn.value,
                             role: "user"
                         })
-                    window.location.href = "../UsersFiles/home.html"
+                    window.location.href = "../Usersfiles/home.html"
                 })
 
             if (error) {
