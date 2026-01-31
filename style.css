@@ -276,3 +276,116 @@ h1 {
 
 
 
+/* GLOBAL FONT & COLORS */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* NAVBAR */
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* RESUME CARDS (DASHBOARD) */
+.resume-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.resume-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+    border: 1px solid #4f46e5;
+}
+.icon-circle {
+    width: 60px; height: 60px;
+    background: #e0e7ff;
+    color: #4f46e5;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+}
+
+/* ANIMATIONS */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* EDITOR SPECIFIC */
+.letter-spacing-2 { letter-spacing: 2px; }
+.object-fit-cover { object-fit: cover; }
+
+
+
+
+/* =================================================================
+   RESPONSIVE RESUME FIXES (Paste at the end of style.css)
+   ================================================================= */
+
+/* 1. Mobile & Tablet Layout (Screens smaller than 992px) */
+@media (max-width: 992px) {
+    
+    /* Split screen khatam karke stack karo (Upar Form, Neeche Preview) */
+    #editorSection .row {
+        flex-direction: column;
+    }
+
+    /* Scrollbars theek karo */
+    #editorSection .col-md-4, 
+    #editorSection .col-md-8 {
+        width: 100% !important;
+        height: auto !important; /* Fixed height hatao */
+        overflow: visible !important;
+        border-right: none !important;
+    }
+
+    /* Form Section Styling */
+    #editorSection .col-md-4 {
+        padding-bottom: 30px;
+        border-bottom: 5px solid #e0e7ff; /* Separation line */
+    }
+
+    /* 2. PREVIEW SCALING (The Magic Fix) */
+    /* Mobile par A4 page ko chota karke dikhao */
+    #resumePreview {
+        transform: scale(0.45) !important; /* 45% size kar do */
+        transform-origin: top center; /* Center se chota karo */
+        margin-top: 20px;
+        margin-bottom: -150px; /* Neeche ka khali gap hatao */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Container ko center karo */
+    #editorSection .col-md-8 {
+        display: flex;
+        justify-content: center;
+        background-color: #525659 !important; /* Dark background for better contrast */
+        padding-bottom: 50px;
+        min-height: 500px; /* Kam az kam itni height rahe */
+    }
+}
+
+/* Very Small Mobiles (iPhone SE etc) */
+@media (max-width: 450px) {
+    #resumePreview {
+        transform: scale(0.38) !important; /* Aur chota karo */
+    }
+}
+
+/* Desktop Fix (Laptop Screens) */
+@media (min-width: 993px) {
+    .col-md-4, .col-md-8 {
+        height: 90vh; /* Wapis height fix karo */
+        overflow-y: auto; /* Scroll wapis lao */
+    }
+}
