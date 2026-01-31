@@ -1,4 +1,4 @@
-import supabase from "../JavaScriptfiles/config.js";
+import supabase from "../scripts/config.js";
 
 // ================================================================   Login Page Functionality   ================================================================
 
